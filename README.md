@@ -3,7 +3,7 @@ Install latest termux-x11 official:
 
 https://github.com/termux/termux-x11
 
-and then 
+and then
 ```
 cd && pkg install wget && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/releases/download/latest/xfce4 && chmod +x ~/xfce4
 ```
@@ -13,11 +13,12 @@ Install xfce4 dependecies
 ~/xfce4 install
 ```
 Using virglrenderer
+
 [(read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle-termux)
 ```
 ~/xfce4 use-virgl
 ```
-Start xfce
+and then simply start xfce
 ```
 ~/xfce4
 ```
