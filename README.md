@@ -31,3 +31,7 @@ Switch back using default renderer instead of virgl
 ```
 ~/xfce4 default
 ```
+# Note
+Solution for android 12+ with [Process completed (signal 9) - press Enter] issue:
+
+[read more from here](https://github.com/termux/termux-app/issues/2366)
