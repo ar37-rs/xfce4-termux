@@ -14,7 +14,7 @@ Install xfce4 dependecies
 ```
 Using virglrenderer
 
-[(read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle-termux)
+[(Read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle-termux)
 ```
 ~/xfce4 use-virgl
 ```
@@ -34,4 +34,4 @@ Switch back using default renderer instead of virgl
 # Note
 Solution for android 12+ with [Process completed (signal 9) - press Enter] issue:
 
-[read more from here](https://github.com/termux/termux-app/issues/2366)
+[Read more from here](https://github.com/termux/termux-app/issues/2366)
