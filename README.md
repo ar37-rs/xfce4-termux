@@ -3,6 +3,8 @@ Install latest termux-x11 official:
 
 https://github.com/termux/termux-x11
 
+or install one of the most stable versions [from here](https://github.com/ar37-rs/xfce4-termux/releases/download/Backup/termux-x11-arm64-v8a-debug.zip)
+
 and then
 ```
 cd && pkg install wget && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/releases/download/latest/xfce4 && chmod +x ~/xfce4
