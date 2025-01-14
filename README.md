@@ -42,10 +42,7 @@ Quite or terminate all xfce4 and 3d party process
 ```
 ~/xfce4 q
 ```
-Switch back using default renderer instead of virgl
-```
-~/xfce4 default
-```
+
 # Note
 Solution for android 12+ with [Process completed (signal 9) - press Enter] issue:
 
