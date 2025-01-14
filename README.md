@@ -16,12 +16,23 @@ Install xfce4 dependecies
 ```
 ~/xfce4 install
 ```
-Using virglrenderer
+Using virglrenderer driver (Universal GPUs)
 
 [(Read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle-termux)
 ```
-~/xfce4 use-virgl
+~/xfce4 driver=virpipe
 ```
+
+Using llvmpipe driver (Uiversal CPUs)
+```
+~/xfce4 driver=llvmpipe
+```
+
+Using default driver can be combined with zink, kgsl for Adreno, amd for Xclipse or any supported other gpu drivers (if any)
+```
+~/xfce4 driver=default
+```
+
 and then simply start xfce
 ```
 ~/xfce4
