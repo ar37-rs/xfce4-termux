@@ -28,6 +28,11 @@ Using llvmpipe driver (Uiversal CPUs)
 ~/xfce4 driver=llvmpipe
 ```
 
+Using llvmpipe driver + zink (Uiversal CPUs)
+```
+~/xfce4 driver=llvmpipe-zink
+```
+
 Using default driver can be combined with zink, kgsl for Adreno, amd for Xclipse or any supported other gpu drivers (if any)
 ```
 ~/xfce4 driver=default
