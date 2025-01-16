@@ -25,12 +25,12 @@ Using virglrenderer driver (Universal GPUs)
 ~/xfce4 driver=virpipe
 ```
 
-Using llvmpipe driver (Uiversal CPUs)
+Using llvmpipe driver (Universal CPUs)
 ```
 ~/xfce4 driver=llvmpipe
 ```
 
-Using llvmpipe driver + zink (Uiversal CPUs)
+Using llvmpipe driver + zink (Universal CPUs)
 ```
 ~/xfce4 driver=llvmpipe-zink
 ```
