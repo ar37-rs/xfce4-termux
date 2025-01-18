@@ -11,7 +11,7 @@ or install one of the most stable versions and slightly modified for smoother ex
 
 and then
 ```
-cd && pkg install wget && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/releases/download/latest/xfce4 && chmod +x ~/xfce4
+cd && pkg install wget openssl && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/releases/download/latest/xfce4 && chmod +x ~/xfce4
 ```
 # Usage from termux terminal:
 Install xfce4 dependecies
