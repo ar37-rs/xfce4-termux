@@ -18,21 +18,21 @@ Install xfce4 dependecies
 ```
 ~/xfce4 install
 ```
-Using virglrenderer driver (Universal GPUs)
 
+Using virglrenderer driver (for some supported GPUs)
 [(Read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle-termux)
 ```
 ~/xfce4 driver=virpipe
 ```
 
-Using llvmpipe driver (Universal CPUs)
+Using llvmpipe driver (software renderer Universal CPUs)
 ```
-~/xfce4 driver=llvmpipe
+~/xfce4 driver=lvp
 ```
 
-Using llvmpipe driver + zink (Universal CPUs)
+Using llvmpipe driver + zink
 ```
-~/xfce4 driver=llvmpipe-zink
+~/xfce4 driver=lvp-zink
 ```
 
 Using default driver can be combined with zink, kgsl for Adreno, amd for Xclipse or any supported other gpu drivers (if any)
