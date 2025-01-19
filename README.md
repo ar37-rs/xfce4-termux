@@ -53,7 +53,7 @@ Quite or terminate all xfce4 and 3d party process
 
 # Note:
 
-* If there's problem when installing xow64, make sure the latest correct termux app version is installed from here:
+* If there's problem when installing, make sure the latest correct termux app version is installed from here:
    https://github.com/termux/termux-app/releases
 
 * Tested using termux app v0.119.0-beta.1
