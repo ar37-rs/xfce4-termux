@@ -19,7 +19,7 @@ Install xfce4 dependecies
 ~/xfce4 install
 ```
 
-Using virglrenderer driver (for some supported GPUs)
+Using virglrenderer driver (for such mali,adreno many other modern supported GPUs)
 
 [(Read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle-termux)
 ```
