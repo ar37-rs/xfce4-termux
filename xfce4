@@ -1,0 +1,118 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+
+# Kill open X11 and pulse processes
+kx11pls() {
+    kill -9 $(pgrep -f "termux.x11") 2>/dev/null
+    kill -9 $(pgrep -f "virgl_test_server_android") 2>/dev/null
+    kill -9 $(pgrep -f "virgl_test_server") 2>/dev/null
+    kill -9 $(pgrep -f "pulseaudio") 2>/dev/null
+}
+
+
+if [[ "$@" == "q" ]]; then
+    kx11pls
+    am broadcast -a com.termux.x11.ACTION_STOP -p com.termux.x11
+    echo
+    echo "X11 process terminated!"
+    echo
+    exit
+elif [[ "$@" == "install" ]]; then
+    pkg update && pkg install x11-repo && pkg install termux-x11-nightly xfce4 xfdesktop xfce*-goodies pulseaudio xfce*-pulseaudio-plugin firefox wget virglrenderer-android virglrenderer termux-api angle-android && cd && rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/download/latest/vgl && chmod +x ~/vgl
+    echo "done."
+    exit
+elif [[ "$1" == "driver=virpipe" ]]; then
+    kx11pls
+    if [ ! -f ~/vgl ]; then
+        cd && pkg install wget virglrenderer-android virglrenderer angle-android
+rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/download/latest/vgl && chmod +x ~/vgl
+        ~/vgl i
+    fi
+    if [ -f ~/.xfce4-llvmpipe ]; then
+        rm -rf ~/.xfce4-llvmpipe
+    fi
+    if [ -f ~/.xfce4-llvmpipe-zink ]; then
+        rm -rf ~/.xfce4-llvmpipe-zink
+    fi
+    touch ~/.xfce4-vgl
+    echo "xfce4 using virglrender (virpipe) driver."
+    exit
+elif [[ "$1" == "driver=lvp" ]]; then
+    kx11pls
+    if [ -f ~/.xfce4-vgl ]; then
+        rm -rf ~/.xfce4-vgl
+    fi
+    if [ -f ~/.xfce4-llvmpipe-zink ]; then
+        rm -rf ~/.xfce4-llvmpipe-zink
+    fi
+    touch ~/.xfce4-llvmpipe
+    echo "xfce4 using llvmpipe driver."
+    exit
+elif [[ "$1" == "driver=lvp-zink" ]]; then
+    kx11pls
+    if [ -f ~/.xfce4-vgl ]; then
+        rm -rf ~/.xfce4-vgl
+    fi
+    if [ -f ~/.xfce4-llvmpipe ]; then
+        rm -rf ~/.xfce4-llvmpipe
+    fi
+    pkg install mesa-vulkan-icd-swrast vulkan-loader-generic
+    touch ~/.xfce4-llvmpipe-zink
+    echo "xfce4 using llvmpipe zink driver."
+    exit
+elif [[ "$1" == "driver=default" ]]; then
+    kx11pls
+    if [ -f ~/.xfce4-vgl ]; then
+        rm -rf ~/.xfce4-vgl
+    fi
+    if [ -f ~/.xfce4-llvmpipe ]; then
+        rm -rf ~/.xfce4-llvmpipe
+    fi
+    if [ -f ~/.xfce4-llvmpipe-zink ]; then
+        rm -rf ~/.xfce4-llvmpipe-zink
+    fi
+    echo "xfce4 using default driver."
+    exit
+fi
+
+# Configure XDG
+kx11pls
+chmod 700 /data/data/com.termux/files/usr/tmp
+export XDG_RUNTIME_DIR=${TMPDIR}
+
+# Start Pulseaudio
+pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &
+sleep 1
+
+if [ -f ~/.xfce4-llvmpipe ]; then
+    export LIBGL_ALWAYS_SOFTWARE=1
+elif [ -f ~/.xfce4-llvmpipe-zink ]; then
+    export LIBGL_ALWAYS_SOFTWARE=1
+    export MESA_LOADER_DRIVER_OVERRIDE=zink
+    export ZINK_DESCRIPTORS=lazy
+    # export LP_NUM_THREADS=4
+fi
+
+# Start Termux X11 & Launch Termux X11 main activity
+termux-x11 -ac -once :0 &
+sleep 1
+
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
+sleep 1
+
+# Stop termux.widget if any (save ram)
+# kill -9 $(pgrep -f "termux.widget")
+
+# Start XFCE4 session
+export DISPLAY=:0
+if [ ! -f ~/.xfce4-vgl ]; then
+    startxfce4
+else
+    ~/vgl startxfce4
+fi
+
+# Terminate x11 and pulseaudio when logged out
+sleep 2
+kx11pls
