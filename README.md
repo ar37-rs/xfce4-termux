@@ -60,4 +60,4 @@ Quite or terminate all xfce4 and 3d party process
 
 * Solution for android 12+ with [Process completed (signal 9) - press Enter] issue:
 
-[Read more from here](https://github.com/termux/termux-app/issues/2366)
+   [Read more from here](https://github.com/termux/termux-app/issues/2366)
