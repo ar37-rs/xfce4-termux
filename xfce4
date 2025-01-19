@@ -26,7 +26,7 @@ elif [[ "$@" == "install" ]]; then
 elif [[ "$1" == "driver=virpipe" ]]; then
     kx11pls
     if [ ! -f ~/vgl ]; then
-        cd && pkg install wget virglrenderer-android virglrenderer angle-android
+        cd && pkg install wget virglrenderer-android virglrenderer angle-android openssl
 rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/download/latest/vgl && chmod +x ~/vgl
         ~/vgl i
     fi
