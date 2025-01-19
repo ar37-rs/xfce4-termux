@@ -51,7 +51,13 @@ Quite or terminate all xfce4 and 3d party process
 ~/xfce4 q
 ```
 
-# Note
-Solution for android 12+ with [Process completed (signal 9) - press Enter] issue:
+# Note:
+
+* If there's problem when installing xow64, make sure the latest correct termux app version is installed from here:
+   https://github.com/termux/termux-app/releases
+
+* Tested using termux app v0.119.0-beta.1
+
+* Solution for android 12+ with [Process completed (signal 9) - press Enter] issue:
 
 [Read more from here](https://github.com/termux/termux-app/issues/2366)
