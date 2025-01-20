@@ -58,6 +58,15 @@ Quite or terminate all xfce4 and 3d party process
 
 * Tested using termux app v0.119.0-beta.1
 
-* Solution for android 12+ with [Process completed (signal 9) - press Enter] issue:
+* Fix for android 12+ with [Process completed (signal 9) - press Enter] issue (using adb):
+   For Android 12L & Android 13+
+   ```
+   adb shell "settings put global settings_enable_monitor_phantom_procs false"
+   ```
 
-   [Read more from here](https://github.com/termux/termux-app/issues/2366)
+   For Android 12：
+   ```
+   adb shell "/system/bin/device_config set_sync_disabled_for_tests persistent; /system/bin/device_config put activity_manager max_phantom_processes 2147483647"
+   ```
+
+   [Read more from here](https://ivonblog.com/en-us/posts/fix-termux-signal9-error/) or [here](https://github.com/termux/termux-app/issues/2366)
