@@ -65,7 +65,7 @@ Quite or terminate all xfce4 and 3d party process
    adb shell "settings put global settings_enable_monitor_phantom_procs false"
    ```
 
-   For Android 12：
+   For Android 12
    ```
    adb shell "/system/bin/device_config set_sync_disabled_for_tests persistent; /system/bin/device_config put activity_manager max_phantom_processes 2147483647"
    ```
