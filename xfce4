@@ -24,7 +24,6 @@ elif [[ "$@" == "install" ]]; then
     echo "done."
     exit
 elif [[ "$1" == "driver=virpipe" ]]; then
-    kx11pls
     if [ ! -f ~/vgl ]; then
         cd && pkg install wget virglrenderer-android virglrenderer angle-android openssl
 rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/download/latest/vgl && chmod +x ~/vgl
@@ -38,9 +37,9 @@ rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/down
     fi
     touch ~/.xfce4-vgl
     echo "xfce4 using virglrender (virpipe) driver."
+    kx11pls
     exit
 elif [[ "$1" == "driver=lvp" ]]; then
-    kx11pls
     if [ -f ~/.xfce4-vgl ]; then
         rm -rf ~/.xfce4-vgl
     fi
@@ -49,9 +48,9 @@ elif [[ "$1" == "driver=lvp" ]]; then
     fi
     touch ~/.xfce4-llvmpipe
     echo "xfce4 using llvmpipe driver."
+    kx11pls
     exit
 elif [[ "$1" == "driver=lvp-zink" ]]; then
-    kx11pls
     if [ -f ~/.xfce4-vgl ]; then
         rm -rf ~/.xfce4-vgl
     fi
@@ -61,9 +60,9 @@ elif [[ "$1" == "driver=lvp-zink" ]]; then
     pkg install mesa-vulkan-icd-swrast vulkan-loader-generic
     touch ~/.xfce4-llvmpipe-zink
     echo "xfce4 using llvmpipe zink driver."
+    kx11pls
     exit
 elif [[ "$1" == "driver=default" ]]; then
-    kx11pls
     if [ -f ~/.xfce4-vgl ]; then
         rm -rf ~/.xfce4-vgl
     fi
@@ -74,6 +73,19 @@ elif [[ "$1" == "driver=default" ]]; then
         rm -rf ~/.xfce4-llvmpipe-zink
     fi
     echo "xfce4 using default driver."
+    kx11pls
+    exit
+elif [[ "$1" == "dri3=true" ]]; then
+    touch ~/.xfce4-dri3
+    echo "termux-x11 is activated."
+    kx11pls
+    exit
+elif [[ "$1" == "dri3=false" ]]; then
+    if [ -f ~/.xfce4-dri3 ]; then
+        rm -rf ~/.xfce4-dri3
+    fi
+    echo "termux-x11 is deactivated."
+    kx11pls
     exit
 fi
 
@@ -96,7 +108,13 @@ elif [ -f ~/.xfce4-llvmpipe-zink ]; then
 fi
 
 # Start Termux X11 & Launch Termux X11 main activity
-termux-x11 -ac -once :0 &
+if [ -f ~/.xfce4-dri3 ]; then
+    termux-x11 -ac -once :0 &
+    echo "termux-x11 is using DRI3."
+else
+    termux-x11 -ac -once -disable-dri3 :0 &
+    echo "termux-x11 is using DRI2."
+fi
 sleep 1
 
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
