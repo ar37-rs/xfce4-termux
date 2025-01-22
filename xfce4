@@ -91,7 +91,19 @@ elif [[ "$1" == "dri3=false" ]]; then
     echo "termux-x11 is deactivated."
     kx11pls
     exit
-fi
+elif [[ "$1" == "pulse-glibc=true" ]]; then
+    touch ~/.xfce4-pulse-glibc
+    echo "Using pulseaudio glibc."
+    kx11pls
+    exit
+elif [[ "$1" == "pulse-glibc=false" ]]; then
+    if [ -f ~/.xfce4-pulse-glibc ]; then
+        rm -rf ~/.xfce4-pulse-glibc
+    fi
+    echo "Using pulseaudio bionic."
+    kx11pls
+    exit
+else
 
 # Configure XDG
 kx11pls
@@ -99,7 +111,15 @@ chmod 700 /data/data/com.termux/files/usr/tmp
 export XDG_RUNTIME_DIR=${TMPDIR}
 
 # Start Pulseaudio
-pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &
+if [ -f ~/.xfce4-pulse-glibc ]; then
+    grun -s /data/data/com.termux/files/usr/bin/pulseaudio --start --exit-idle-time=-1 &
+    grun -s /data/data/com.termux/files/usr/bin/pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1 &
+    echo "Using pulseaudio glibc."
+else
+    pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &
+    echo "Using pulseaudio bionic."
+fi
+
 sleep 1
 
 if [ -f ~/.xfce4-llvmpipe ]; then
@@ -138,3 +158,4 @@ fi
 # Terminate x11 and pulseaudio when logged out
 sleep 2
 kx11pls
+fi
