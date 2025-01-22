@@ -13,11 +13,15 @@ kx11pls() {
 
 
 if [[ "$@" == "q" ]]; then
-    kx11pls
     am broadcast -a com.termux.x11.ACTION_STOP -p com.termux.x11
     echo
     echo "X11 process terminated!"
     echo
+    kx11pls
+    exit
+elif [[ "$@" == "sdcard=true" ]]; then
+    pkg install termux-api && termux-setup-storage
+    echo "sdcard configured."
     exit
 elif [[ "$@" == "install" ]]; then
     pkg update && pkg install x11-repo && pkg install termux-x11-nightly xfce4 xfdesktop xfce*-goodies pulseaudio xfce*-pulseaudio-plugin firefox wget virglrenderer-android virglrenderer termux-api angle-android && cd && rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/download/latest/vgl && chmod +x ~/vgl
