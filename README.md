@@ -46,6 +46,16 @@ and then simply start xfce
 ~/xfce4
 ```
 # Additional usage:
+Activate dri3 (needed for some adreno kgsl, amd, vulkan wrapper and other supported drivers)
+```
+~/xfce4 dri3=true
+```
+
+Deactivated dri3 (default), usually for virgl driver use case if experiencing some issues
+```
+~/xfce4 dri3=false
+```
+
 Quite or terminate all xfce4 and 3d party process
 ```
 ~/xfce4 q
