@@ -56,6 +56,12 @@ Deactivated dri3 (default), usually for virgl driver use case if experiencing so
 ~/xfce4 dri3=false
 ```
 
+Enable sdcard storage
+```
+~/xfce4 sdcard=true
+```
+and then test cd to sdcard ```cd /sdcard```
+
 Quite or terminate all xfce4 and 3d party process
 ```
 ~/xfce4 q
