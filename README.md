@@ -5,7 +5,7 @@ Install latest termux-x11 official:
 
 https://github.com/termux/termux-x11
 
-or install one of the most stable versions and slightly modified for smoother experience from here:
+or install one of the most stable versions and slightly modified for smoother experience from here (for low-end devices only):
 
 [termux-x11](https://github.com/ar37-rs/xfce4-termux/releases/download/Backup/termux-x11-arm64-v8a-debug.zip)
 
