@@ -56,6 +56,16 @@ Deactivated dri3 (default), usually for virgl driver use case if experiencing so
 ~/xfce4 dri3=false
 ```
 
+Using pulseaudio glibc (optional if there's sound problem)
+```
+~/xfce4 pulse-glibc=true
+```
+
+Switch back to pulseaudio bionic (default)
+```
+~/xfce4 pulse-glibc=false
+```
+
 Enable sdcard storage
 ```
 ~/xfce4 sdcard=true
