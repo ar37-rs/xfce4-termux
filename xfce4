@@ -81,14 +81,14 @@ elif [[ "$1" == "driver=default" ]]; then
     exit
 elif [[ "$1" == "dri3=true" ]]; then
     touch ~/.xfce4-dri3
-    echo "termux-x11 is activated."
+    echo "termux-x11 dri3 is activated."
     kx11pls
     exit
 elif [[ "$1" == "dri3=false" ]]; then
     if [ -f ~/.xfce4-dri3 ]; then
         rm -rf ~/.xfce4-dri3
     fi
-    echo "termux-x11 is deactivated."
+    echo "termux-x11 dri3 is deactivated."
     kx11pls
     exit
 elif [[ "$1" == "pulse-glibc=true" ]]; then
