@@ -46,7 +46,7 @@ and then simply start xfce
 ~/xfce4
 ```
 # Additional usage:
-Activate dri3 (needed for some adreno kgsl, amd, vulkan wrapper and other supported drivers)
+Activate dri3 (needed for some mali panfrost, adreno kgsl, amd, vulkan wrapper and other supported drivers)
 ```
 ~/xfce4 dri3=true
 ```
