@@ -1,6 +1,7 @@
 ![alt_test](image/xfce4.png)
 
 # Installation:
+
 Install latest termux-x11 official:
 
 https://github.com/termux/termux-x11
@@ -13,7 +14,9 @@ and then
 ```
 cd && pkg install wget openssl && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/raw/refs/heads/main/xfce4 && chmod +x ~/xfce4
 ```
+
 # Usage from termux terminal:
+
 Install xfce4 dependecies
 ```
 ~/xfce4 install
@@ -45,7 +48,19 @@ and then simply start xfce
 ```
 ~/xfce4
 ```
+
 # Additional usage:
+
+Using termux-x11 ```DISPLAY=:1```
+```
+~/xfce4 display=1
+```
+
+Switch back to ```DISPLAY=:0```
+```
+~/xfce4 display=0
+```
+
 Activate dri3 (needed for some mali panfrost, adreno kgsl, amd, vulkan wrapper and other supported drivers)
 ```
 ~/xfce4 dri3=true
