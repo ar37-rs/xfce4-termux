@@ -46,7 +46,7 @@ Using default driver can be combined with zink, kgsl for Adreno, amd for Xclipse
 
 and then simply start xfce
 ```
-~/xfce4
+~/xfce4 s
 ```
 
 # Additional usage:
