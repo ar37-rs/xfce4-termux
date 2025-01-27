@@ -115,7 +115,7 @@ elif [[ "$1" == "pulse-glibc=false" ]]; then
     echo "Using pulseaudio bionic."
     kx11pls
     exit
-else
+elif [[ "$1" == "s" ]]; then
 
 # Configure XDG
 kx11pls
@@ -187,4 +187,7 @@ fi
 # Terminate x11 and pulseaudio when logged out
 sleep 2
 kx11pls
+else
+echo "Command not found"
+echo "please input the correct available command."
 fi
