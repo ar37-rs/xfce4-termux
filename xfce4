@@ -91,6 +91,18 @@ elif [[ "$1" == "dri3=false" ]]; then
     echo "termux-x11 dri3 is deactivated."
     kx11pls
     exit
+elif [[ "$1" == "display=0" ]]; then
+    if [ -f ~/.xfce4-display-1 ]; then
+        rm -rf ~/.xfce4-display-1
+    fi
+    echo "termux-x11 is using display=:0"
+    kx11pls
+    exit
+elif [[ "$1" == "display=1" ]]; then
+    touch ~/.xfce4-display-1
+    echo "termux-x11 is using display=:1"
+    kx11pls
+    exit
 elif [[ "$1" == "pulse-glibc=true" ]]; then
     touch ~/.xfce4-pulse-glibc
     echo "Using pulseaudio glibc."
@@ -133,11 +145,23 @@ fi
 
 # Start Termux X11 & Launch Termux X11 main activity
 if [ -f ~/.xfce4-dri3 ]; then
-    termux-x11 -ac -once :0 &
-    echo "termux-x11 is using DRI3."
+   if [ -f ~/.xfce4-display-1 ]; then
+       termux-x11 -ac -once :1 &
+       echo "termux-x11 is using DISPLAY=:1"
+   else
+       termux-x11 -ac -once :0 &
+       echo "termux-x11 is using DISPLAY=:0"
+   fi
+    echo "termux-x11 with DRI3 enabled."
 else
-    termux-x11 -ac -once -disable-dri3 :0 &
-    echo "termux-x11 is using DRI2."
+   if [ -f ~/.xfce4-display-1 ]; then
+       termux-x11 -ac -once -disable-dri3 :1 &
+       echo "termux-x11 is using DISPLAY=:1"
+   else
+       echo "termux-x11 is using DISPLAY=:0"
+       termux-x11 -ac -once -disable-dri3 :0 &
+   fi
+    echo "termux-x11 with DRI2."
 fi
 sleep 1
 
@@ -148,7 +172,12 @@ sleep 1
 # kill -9 $(pgrep -f "termux.widget")
 
 # Start XFCE4 session
-export DISPLAY=:0
+if [ -f ~/.xfce4-display-1 ]; then
+    export DISPLAY=:1
+else
+    export DISPLAY=:0
+fi
+
 if [ ! -f ~/.xfce4-vgl ]; then
     startxfce4
 else
