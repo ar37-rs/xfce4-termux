@@ -93,7 +93,7 @@ Quite or terminate all xfce4 and 3d party process
 ```
 
 # Note:
-* Fix vulkan support for some devices
+* Fix virgl-angle vulkan support for some devices
 
    [such encountered on this issue](https://github.com/ar37-rs/virgl-angle-termux/issues/1)
    ```
