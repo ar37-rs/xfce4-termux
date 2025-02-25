@@ -61,6 +61,18 @@ Switch back to ```DISPLAY=:0```
 ~/xfce4 display=0
 ```
 
+Activate termux-x11 ```TERMUX_X11_FORCE_FLIP```
+
+(a workaround for some graphic drivers as mentioned [here](https://github.com/termux/termux-x11/commit/bf70f09f1240fd5491bcbe7a5e7b9bb3d7164c3b))
+```
+~/xfce4 flip=true
+```
+
+Deactivated force flip
+```
+~/xfce4 flip=false
+```
+
 Activate dri3 (needed for some mali panfrost, adreno kgsl, amd, vulkan wrapper and other supported drivers)
 ```
 ~/xfce4 dri3=true
