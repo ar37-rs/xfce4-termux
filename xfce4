@@ -91,6 +91,18 @@ elif [[ "$1" == "dri3=false" ]]; then
     echo "termux-x11 dri3 is deactivated."
     kx11pls
     exit
+elif [[ "$1" == "flip=true" ]]; then
+    touch ~/.xfce4-force-flip
+    echo "termux-x11 force flip is activated."
+    kx11pls
+    exit
+elif [[ "$1" == "flip=false" ]]; then
+    if [ -f ~/.xfce4-force-flip ]; then
+        rm -rf ~/.xfce4-force-flip
+    fi
+    echo "termux-x11 force flip is deactivated."
+    kx11pls
+    exit
 elif [[ "$1" == "display=0" ]]; then
     if [ -f ~/.xfce4-display-1 ]; then
         rm -rf ~/.xfce4-display-1
@@ -142,6 +154,12 @@ elif [ -f ~/.xfce4-llvmpipe-zink ]; then
     export ZINK_DESCRIPTORS=lazy
     # export LP_NUM_THREADS=4
 fi
+
+if [ -f ~/.xfce4-force-flip ]; then
+    echo "using termux-x11 force flip"
+    export TERMUX_X11_FORCE_FLIP=1
+fi
+
 
 # Start Termux X11 & Launch Termux X11 main activity
 if [ -f ~/.xfce4-dri3 ]; then
