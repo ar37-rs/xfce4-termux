@@ -40,6 +40,8 @@ Using llvmpipe driver + zink
 ```
 
 Using zink driver (thanks to [alexvorxx](https://github.com/alexvorxx/zink-xlib-termux) for providing zink for xlib termux, working great on GPU Mali-G series as well)
+
+zink xlib driver is OpenGL only (vgl/virgl-angle script can be used co-existly for OpenGL ES support) 
 ```
 ~/xfce4 driver=zink
 # (optional) enable dri3 for better zink compatibility
