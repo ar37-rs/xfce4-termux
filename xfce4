@@ -42,6 +42,9 @@ rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/down
     if [ -f ~/.xfce4-zink ]; then
         rm -rf ~/.xfce4-zink
     fi
+    if [ -f ~/.vgl-zink-xlib-compat ]; then
+        rm -rf ~/.vgl-zink-xlib-compat
+    fi
     touch ~/.xfce4-vgl
     echo "xfce4 using virglrender (virpipe) driver."
     kx11pls
@@ -56,6 +59,9 @@ elif [[ "$1" == "driver=lvp" ]]; then
     if [ -f ~/.xfce4-zink ]; then
         rm -rf ~/.xfce4-zink
     fi
+    if [ -f ~/.vgl-zink-xlib-compat ]; then
+        rm -rf ~/.vgl-zink-xlib-compat
+    fi
     touch ~/.xfce4-llvmpipe
     echo "xfce4 using llvmpipe driver."
     kx11pls
@@ -69,6 +75,9 @@ elif [[ "$1" == "driver=lvp-zink" ]]; then
     fi
     if [ -f ~/.xfce4-zink ]; then
         rm -rf ~/.xfce4-zink
+    fi
+    if [ -f ~/.vgl-zink-xlib-compat ]; then
+        rm -rf ~/.vgl-zink-xlib-compat
     fi
     if [ ! -f /data/data/com.termux/files/usr/share/vulkan/icd.d/lvp_icd.aarch64.json ]; then
         pkg install mesa-vulkan-icd-swrast vulkan-loader-generic
@@ -91,6 +100,7 @@ elif [[ "$1" == "driver=zink" ]]; then
         echo "Installing xfce4_zink components..." && cd && rm -rf ~/xfce4_zink.tar.xz && wget https://github.com/ar37-rs/xfce4-termux/releases/download/Backup/xfce4_zink.tar.xz && echo "extracting xfce4_zink.tar.xz..." && tar -xf ~/xfce4_zink.tar.xz && rm -rf ~/xfce4_zink.tar.xz
     fi
     touch ~/.xfce4-zink
+    touch ~/.vgl-zink-xlib-compat
     echo "xfce4 using zink driver."
     kx11pls
     exit
@@ -106,6 +116,9 @@ elif [[ "$1" == "driver=default" ]]; then
     fi
     if [ -f ~/.xfce4-zink ]; then
         rm -rf ~/.xfce4-zink
+    fi
+    if [ -f ~/.vgl-zink-xlib-compat ]; then
+        rm -rf ~/.vgl-zink-xlib-compat
     fi
     echo "xfce4 using default driver."
     kx11pls
