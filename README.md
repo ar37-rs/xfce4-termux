@@ -39,6 +39,11 @@ Using llvmpipe driver + zink
 ~/xfce4 driver=lvp-zink
 ```
 
+Using zink driver (thanks to [alexvorxx](https://github.com/alexvorxx/zink-xlib-termux) for providing zink for xlib termux, working great on GPU Mali-G series as well)
+```
+~/xfce4 driver=zink
+```
+
 Using default driver can be combined with zink, kgsl for Adreno, amd for Xclipse or any supported other gpu drivers (if any)
 ```
 ~/xfce4 driver=default
