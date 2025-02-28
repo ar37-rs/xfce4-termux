@@ -189,7 +189,6 @@ elif [ -f ~/.xfce4-zink ]; then
     export ZINK_DESCRIPTORS=lazy
     export MESA_GL_VERSION_OVERRIDE=3.2COMPAT
     export MESA_GLSL_VERSION_OVERRIDE=150
-    export MESA_GLES_VERSION_OVERRIDE=3.1
     export GALLIUM_DRIVER=zink
     export MESA_BACK_BUFER=pixmap
     export LD_LIBRARY_PATH=~/xfce4_zink/lib:$LD_LIBRARY_PATH
