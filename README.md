@@ -39,7 +39,7 @@ Using llvmpipe driver + zink
 ~/xfce4 driver=lvp-zink
 ```
 
-Using zink driver (thanks to [alexvorxx](https://github.com/alexvorxx/zink-xlib-termux) for providing zink for xlib termux, working great on GPU Mali-G series as well)
+Using zink driver (thanks to [alexvorxx](https://github.com/alexvorxx/zink-xlib-termux) for providing zink for xlib termux, working great on GPU Mali-G series with vulkan 1.1+ as well)
 
 zink xlib driver is OpenGL only (vgl/virgl-angle script can be used co-existly for OpenGL ES support) 
 ```
