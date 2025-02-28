@@ -39,6 +39,9 @@ rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle-termux/releases/down
     if [ -f ~/.xfce4-llvmpipe-zink ]; then
         rm -rf ~/.xfce4-llvmpipe-zink
     fi
+    if [ -f ~/.xfce4-zink ]; then
+        rm -rf ~/.xfce4-zink
+    fi
     touch ~/.xfce4-vgl
     echo "xfce4 using virglrender (virpipe) driver."
     kx11pls
@@ -49,6 +52,9 @@ elif [[ "$1" == "driver=lvp" ]]; then
     fi
     if [ -f ~/.xfce4-llvmpipe-zink ]; then
         rm -rf ~/.xfce4-llvmpipe-zink
+    fi
+    if [ -f ~/.xfce4-zink ]; then
+        rm -rf ~/.xfce4-zink
     fi
     touch ~/.xfce4-llvmpipe
     echo "xfce4 using llvmpipe driver."
@@ -61,9 +67,31 @@ elif [[ "$1" == "driver=lvp-zink" ]]; then
     if [ -f ~/.xfce4-llvmpipe ]; then
         rm -rf ~/.xfce4-llvmpipe
     fi
-    pkg install mesa-vulkan-icd-swrast vulkan-loader-generic
+    if [ -f ~/.xfce4-zink ]; then
+        rm -rf ~/.xfce4-zink
+    fi
+    if [ ! -f /data/data/com.termux/files/usr/share/vulkan/icd.d/lvp_icd.aarch64.json ]; then
+        pkg install mesa-vulkan-icd-swrast vulkan-loader-generic
+    fi
     touch ~/.xfce4-llvmpipe-zink
     echo "xfce4 using llvmpipe zink driver."
+    kx11pls
+    exit
+elif [[ "$1" == "driver=zink" ]]; then
+    if [ -f ~/.xfce4-vgl ]; then
+        rm -rf ~/.xfce4-vgl
+    fi
+    if [ -f ~/.xfce4-llvmpipe ]; then
+        rm -rf ~/.xfce4-llvmpipe
+    fi
+    if [ -f ~/.xfce4-llvmpipe-zink ]; then
+        rm -rf ~/.xfce4-llvmpipe-zink
+    fi
+    if [ ! -f ~/xfce4_zink/lib/libGL.so.1 ]; then
+        echo "Installing xfce4_zink components..." && cd && rm -rf ~/xfce4_zink.tar.xz && wget https://github.com/ar37-rs/xfce4-termux/releases/download/Backup/xfce4_zink.tar.xz && echo "extracting xfce4_zink.tar.xz..." && tar -xf ~/xfce4_zink.tar.xz && rm -rf ~/xfce4_zink.tar.xz
+    fi
+    touch ~/.xfce4-zink
+    echo "xfce4 using zink driver."
     kx11pls
     exit
 elif [[ "$1" == "driver=default" ]]; then
@@ -75,6 +103,9 @@ elif [[ "$1" == "driver=default" ]]; then
     fi
     if [ -f ~/.xfce4-llvmpipe-zink ]; then
         rm -rf ~/.xfce4-llvmpipe-zink
+    fi
+    if [ -f ~/.xfce4-zink ]; then
+        rm -rf ~/.xfce4-zink
     fi
     echo "xfce4 using default driver."
     kx11pls
@@ -153,6 +184,16 @@ elif [ -f ~/.xfce4-llvmpipe-zink ]; then
     export MESA_LOADER_DRIVER_OVERRIDE=zink
     export ZINK_DESCRIPTORS=lazy
     # export LP_NUM_THREADS=4
+elif [ -f ~/.xfce4-zink ]; then
+    export LIBGL_ALWAYS_SOFTWARE=0
+    export ZINK_DESCRIPTORS=lazy
+    export MESA_GL_VERSION_OVERRIDE=3.2COMPAT
+    export MESA_GLSL_VERSION_OVERRIDE=150
+    export MESA_GLES_VERSION_OVERRIDE=3.1
+    export GALLIUM_DRIVER=zink
+    export MESA_BACK_BUFER=pixmap
+    export LD_LIBRARY_PATH=~/xfce4_zink/lib:$LD_LIBRARY_PATH
+    export LIBGL_DRIVERS_PATH=~/xfce4_zink/lib
 fi
 
 if [ -f ~/.xfce4-force-flip ]; then
@@ -160,6 +201,17 @@ if [ -f ~/.xfce4-force-flip ]; then
     export TERMUX_X11_FORCE_FLIP=1
 fi
 
+if [ -f ~/.xfce4-vgl ]; then
+    echo "termux-x11 is using virpipe driver."
+elif [ -f ~/.xfce4-llvmpipe ]; then
+    echo "termux-x11 is using llvmpipe driver."
+elif [ -f ~/.xfce4-llvmpipe-zink ]; then
+    echo "termux-x11 is using zink llvmpipe driver."
+elif [ -f ~/.xfce4-zink ]; then
+    echo "termux-x11 is using zink driver."
+else
+    echo "termux-x11 is using default driver."
+fi
 
 # Start Termux X11 & Launch Termux X11 main activity
 if [ -f ~/.xfce4-dri3 ]; then
