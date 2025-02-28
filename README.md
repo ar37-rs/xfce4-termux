@@ -127,5 +127,4 @@ Quite or terminate all xfce4 and 3d party process
    adb shell "/system/bin/device_config put activity_manager max_phantom_processes 2147483647"
    ```
    and then restart/reboot device.
-
-   [Read more from here](https://ivonblog.com/en-us/posts/fix-termux-signal9-error/) or [here](https://github.com/termux/termux-app/issues/2366)
+   [read more for more info from here](https://ivonblog.com/en-us/posts/fix-termux-signal9-error/) or [here](https://github.com/termux/termux-app/issues/2366)
