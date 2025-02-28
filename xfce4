@@ -184,7 +184,7 @@ fi
 sleep 1
 
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
-sleep 1
+sleep 2
 
 # Stop termux.widget if any (save ram)
 # kill -9 $(pgrep -f "termux.widget")
