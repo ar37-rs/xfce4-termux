@@ -41,7 +41,7 @@ Using llvmpipe driver + zink
 
 Using zink driver (working great on GPU Mali-G series with vulkan 1.1+ as well)
 
-zink xlib driver support up to OpenGL 3.2 as panfrost alternative for Mali (thanks to [alexvorxx](https://github.com/alexvorxx/zink-xlib-termux))
+zink xlib driver support up to OpenGL 3.2 as panfrost alternative for Mali (thanks to [alexvorxx](https://github.com/alexvorxx/zink-xlib-termux) for providing the build steps)
 
 (vgl/virgl-angle can be used co-existly for OpenGL ES and higher version of Open GL support) 
 ```
