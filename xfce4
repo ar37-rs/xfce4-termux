@@ -205,7 +205,6 @@ elif [ -f ~/.xfce4-zink ]; then
     export GALLIUM_DRIVER=zink
     export MESA_BACK_BUFER=pixmap
     export LD_LIBRARY_PATH=~/xfce4_zink/lib:$LD_LIBRARY_PATH
-    export LIBGL_DRIVERS_PATH=~/xfce4_zink/lib
 fi
 
 if [ -f ~/.xfce4-force-flip ]; then
