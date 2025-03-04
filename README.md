@@ -2,7 +2,7 @@
 
 # Installation:
 
-Install latest termux-x11 official:
+### Install latest termux-x11 official:
 
 https://github.com/termux/termux-x11
 
@@ -10,7 +10,7 @@ or install one of the most stable versions and slightly modified for smoother ex
 
 [termux-x11](https://github.com/ar37-rs/xfce4-termux/releases/download/Backup/termux-x11-arm64-v8a-debug.zip)
 
-and then
+### and then
 ```
 cd && pkg install wget openssl which && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/raw/refs/heads/main/xfce4 && chmod +x ~/xfce4
 ```
@@ -24,7 +24,7 @@ Install xfce4 dependecies
 
 Using virglrenderer driver (for such Mali, Adreno many other modern supported GPUs)
 
-[(Read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle-termux)
+[(Read more for virgl additional usage)](https://github.com/ar37-rs/virgl-angle)
 ```
 ~/xfce4 driver=virpipe
 ```
@@ -123,9 +123,9 @@ Quite or terminate all xfce4 and 3d party process
 # Additional troubleshoot
 * Fix virgl-angle vulkan support for some devices
 
-   [such encountered on this issue](https://github.com/ar37-rs/virgl-angle-termux/issues/1)
+   [such encountered on this issue](https://github.com/ar37-rs/virgl-angle/issues/1)
    ```
-   pkg remove *icd-swrast && pkg install vulkan-loader-generic wget openssl && cd && rm -rf ~/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb && wget https://github.com/ar37-rs/virgl-angle-termux/releases/download/latest/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb && dpkg -i ~/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb
+   pkg remove *icd-swrast && pkg install vulkan-loader-generic wget openssl && cd && rm -rf ~/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb && wget https://github.com/ar37-rs/virgl-angle/releases/download/latest/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb && dpkg -i ~/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb
    ```
    
 * Fix for android 12+ devices with [Process completed (signal 9) - ...] issue using adb:
