@@ -10,7 +10,7 @@ or install one of the most stable versions and slightly modified for smoother ex
 
 [termux-x11](https://github.com/ar37-rs/xfce4-termux/releases/download/Backup/termux-x11-arm64-v8a-debug.zip)
 
-### and then
+### and then install xfce4
 ```
 cd && pkg install wget openssl which && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/raw/refs/heads/main/xfce4 && chmod +x ~/xfce4
 ```
