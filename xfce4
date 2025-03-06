@@ -237,15 +237,15 @@ fi
 
 # Start Termux X11 & Launch Termux X11 main activity
 
-TX11DSPL=0
+TX11DSPL=:0
 TX11DRI3=
 TX11BGRA=
 if [ -f ~/.xfce4-display-1 ]; then
-   TX11DSPL=1
+   TX11DSPL=:1
    export DISPLAY=:1
    echo "termux-x11 is using DISPLAY=:1"
 else
-   export DISPLAY=:1
+   export DISPLAY=:0
    echo "termux-x11 is using DISPLAY=:0"
 fi
 if [ -f ~/.xfce4-dri3 ]; then
@@ -260,7 +260,7 @@ if [ -f ~/.xfce4-bgra ]; then
     echo "termux-x11 with force bgra enabled."
 fi
 
-termux-x11 -ac -once $TX11BGRA $TX11DRI3 :$TX11DSPL &
+termux-x11 -ac -once $TX11BGRA $TX11DRI3 $TX11DSPL &
 sleep 1
 
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
