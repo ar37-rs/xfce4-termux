@@ -1,5 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+# use session type and backend x11
 export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 
