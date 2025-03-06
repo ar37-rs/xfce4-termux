@@ -122,6 +122,18 @@ elif [[ "$1" == "driver=default" ]]; then
     echo "xfce4 using default driver."
     kx11pls
     exit
+elif [[ "$1" == "bgra=true" ]]; then
+    touch ~/.xfce4-bgra
+    echo "termux-x11 is using force bgra"
+    kx11pls
+    exit
+elif [[ "$1" == "bgra=false" ]]; then
+    if [ -f ~/.xfce4-bgra ]; then
+        rm -rf ~/.xfce4-bgra
+    fi
+    echo "termux-x11 is using default rgba"
+    kx11pls
+    exit
 elif [[ "$1" == "dri3=true" ]]; then
     touch ~/.xfce4-dri3
     echo "termux-x11 dri3 is activated."
@@ -224,25 +236,31 @@ else
 fi
 
 # Start Termux X11 & Launch Termux X11 main activity
+
+TXDSPL=0
+TX11DRI3=
+TX11BGRA=
+if [ -f ~/.xfce4-display-1 ]; then
+   DSPL=1
+   export DISPLAY=:1
+   echo "termux-x11 is using DISPLAY=:1"
+else
+   export DISPLAY=:1
+   echo "termux-x11 is using DISPLAY=:0"
+fi
 if [ -f ~/.xfce4-dri3 ]; then
-   if [ -f ~/.xfce4-display-1 ]; then
-       termux-x11 -ac -once :1 &
-       echo "termux-x11 is using DISPLAY=:1"
-   else
-       termux-x11 -ac -once :0 &
-       echo "termux-x11 is using DISPLAY=:0"
-   fi
     echo "termux-x11 with DRI3 enabled."
 else
-   if [ -f ~/.xfce4-display-1 ]; then
-       termux-x11 -ac -once -disable-dri3 :1 &
-       echo "termux-x11 is using DISPLAY=:1"
-   else
-       echo "termux-x11 is using DISPLAY=:0"
-       termux-x11 -ac -once -disable-dri3 :0 &
-   fi
+    DRI3=-disable-dri3
     echo "termux-x11 with DRI2."
 fi
+
+if [ -f ~/.xfce4-bgra ]; then
+    X11BGRA=-force-bgra
+    echo "termux-x11 with force bgra enabled."
+fi
+
+termux-x11 -ac -once $TX11BGRA $TX11DRI3 :$TXDSPL &
 sleep 1
 
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
@@ -250,13 +268,6 @@ sleep 2
 
 # Stop termux.widget if any (save ram)
 # kill -9 $(pgrep -f "termux.widget")
-
-# Start XFCE4 session
-if [ -f ~/.xfce4-display-1 ]; then
-    export DISPLAY=:1
-else
-    export DISPLAY=:0
-fi
 
 if [ ! -f ~/.xfce4-vgl ]; then
     startxfce4
@@ -268,6 +279,6 @@ fi
 sleep 2
 kx11pls
 else
-echo "Command not found"
-echo "please input the correct available command."
+echo "Command not found please input"
+echo "the correct available command."
 fi
