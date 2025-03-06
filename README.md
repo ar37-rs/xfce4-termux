@@ -82,6 +82,16 @@ Deactivated force flip
 ~/xfce4 flip=false
 ```
 
+Force termux-x11 using bgra texture format (a bit faster for some supported GPUs)
+```
+~/xfce4 bgra=true
+```
+
+Switch back using rgba
+```
+~/xfce4 bgra=false
+```
+
 Activate dri3 (needed for some mali panfrost, adreno kgsl, amd, vulkan wrapper and other supported drivers)
 ```
 ~/xfce4 dri3=true
