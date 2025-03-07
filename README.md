@@ -82,7 +82,7 @@ Deactivated force flip
 ~/xfce4 flip=false
 ```
 
-Force termux-x11 using bgra texture format (a bit faster for some supported GPUs)
+Force termux-x11 using bgra PixelFormat (a bit faster for some supported GPUs)
 ```
 ~/xfce4 bgra=true
 ```
