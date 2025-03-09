@@ -10,7 +10,7 @@ or install one of the most stable versions and slightly modified for smoother ex
 
 ### and then install xfce4
 ```
-cd && pkg install wget openssl which && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/raw/refs/heads/main/xfce4 && chmod +x ~/xfce4
+cd && pkg install wget which && rm -rf ~/xfce4 && wget https://github.com/ar37-rs/xfce4-termux/raw/refs/heads/main/xfce4 && chmod +x ~/xfce4
 ```
 
 # Usage from termux terminal:
