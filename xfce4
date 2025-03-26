@@ -25,7 +25,7 @@ elif [[ "$@" == "sdcard=true" ]]; then
     echo "sdcard configured."
     exit
 elif [[ "$@" == "install" ]]; then
-    pkg update && pkg install x11-repo && pkg install termux-x11-nightly xfce4 xfdesktop xfce*-goodies pulseaudio xfce*-pulseaudio-plugin firefox wget virglrenderer-android virglrenderer termux-api angle-android && cd && rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle/raw/refs/heads/main/vgl && chmod +x ~/vgl
+    pkg update && pkg install x11-repo && pkg install termux-x11-nightly xorg-xrandr xfce4 xfdesktop xfce*-goodies pulseaudio xfce*-pulseaudio-plugin firefox wget virglrenderer-android virglrenderer termux-api angle-android && cd && rm -rf ~/vgl && wget https://github.com/ar37-rs/virgl-angle/raw/refs/heads/main/vgl && chmod +x ~/vgl
     echo "done."
     exit
 elif [[ "$1" == "driver=virpipe" ]]; then
