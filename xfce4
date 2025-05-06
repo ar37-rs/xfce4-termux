@@ -210,6 +210,7 @@ elif [ -f ~/.xfce4-llvmpipe-zink ]; then
     export ZINK_DESCRIPTORS=lazy
     # export LP_NUM_THREADS=4
 elif [ -f ~/.xfce4-zink ]; then
+    export MESA_VK_WSI_PRESENT_MODE=fifo
     export LIBGL_ALWAYS_SOFTWARE=0
     export ZINK_DESCRIPTORS=lazy
     export MESA_GL_VERSION_OVERRIDE=3.2COMPAT
