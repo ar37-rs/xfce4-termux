@@ -129,7 +129,7 @@ Quite or terminate all xfce4 and 3d party process
 * Tested using termux app v0.119.0-beta.1
 
 # Additional troubleshoot
-* Fix virgl-angle vulkan support for some devices
+* Fix virgl-angle vulkan support and zink for some devices
 
    [such encountered on this issue](https://github.com/ar37-rs/virgl-angle/issues/1)
    ```
