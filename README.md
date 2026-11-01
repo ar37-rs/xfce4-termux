@@ -129,11 +129,9 @@ Quite or terminate all xfce4 and 3d party process
 * Tested using termux app v0.119.x
 
 # Additional troubleshoot
-* Fix virgl-angle vulkan support and zink for some devices
-
-   [such encountered on this issue](https://github.com/ar37-rs/virgl-angle/issues/1)
+* Fix vulkan support for some devices
    ```
-   pkg remove *icd-swrast && pkg install vulkan-loader-generic wget && cd && rm -rf ~/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb && wget https://github.com/ar37-rs/virgl-angle/releases/download/latest/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb && dpkg -i ~/mesa-vulkan-icd-wrapper_25.0.0-1_aarch64.deb
+   pkg install vulkan-loader-generic wget && cd && rm -rf ~/wrapper-gamenative_aarch64.deb && wget https://github.com/ar37-rs/virgl-angle/releases/download/latest/wrapper-gamenative_aarch64.deb && dpkg -i ~/wrapper-gamenative_aarch64.deb
    ```
    
 * Fix for android 12+ devices with [Process completed (signal 9) - ...] issue using adb:
